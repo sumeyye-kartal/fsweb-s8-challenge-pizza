@@ -8,11 +8,17 @@
   background-position: center;
   width: 100%;
   height: 100vh;
-  gap: 30px;
+  gap: 20px;
 }
 
-.home-banner > img {
-  margin-top: 80px;
+.Home-img {
+  margin-top: 30px;
+}
+.home-banner > p {
+  font-family: "Satisfy";
+  font-weight: 400;
+  font-size: 28px;
+  color: #fdc913;
 }
 
 .home-banner h1 {

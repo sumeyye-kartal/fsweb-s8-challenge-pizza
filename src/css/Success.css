@@ -1,24 +1,85 @@
 .success-content {
   width: 100%;
-  height: 100vh;
+  height: 60rem;
   background-color: #ce2829;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  gap: 80px;
+  gap: 2rem;
 }
 
-img {
-  margin-top: 100px;
+.success-content div:nth-child(1) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
-h1 {
+.success-content img {
+  margin: 50px;
+}
+.success-text {
+  font-family: "Satisfy";
+  font-size: 28px;
+  font-weight: 400;
+  color: #fdc913;
+}
+
+.success-content h1 {
   color: #ffffff;
   font-family: "Roboto Condensed";
   font-size: 76px;
-  line-height: 92px;
-  letter-spacing: 1.5px;
   font-weight: 300;
   text-align: center;
+}
+hr {
+  width: 100%;
+}
+.success-content h3 {
+  font-family: "Barlow";
+  font-size: 28px;
+  font-weight: 500;
+  color: #ffffff;
+}
+.success-pay {
+  width: 20%;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.3rem;
+  border: 1px solid #faf7f2;
+  padding: 2rem;
+}
+.success-pay div {
+  display: flex;
+  justify-content: space-between;
+}
+.success-pay div p {
+  font-family: "Barlow";
+  font-size: 18px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.success-mid {
+  width: 15%;
+  height: 10rem;
+  padding-left: 2rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.success-mid p {
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 400;
+}
+
+.success-mid span {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
 }

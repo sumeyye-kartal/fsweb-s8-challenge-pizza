@@ -1,0 +1,71 @@
+.menu-content {
+  display: flex;
+  flex-direction: column;
+  background-color: #faf7f2;
+  gap: 30px;
+}
+.menu-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.menu-text > p {
+  font-family: "Satisfy";
+  font-weight: 400;
+  font-size: 28px;
+  color: #ce2829;
+}
+.menu-text > h2 {
+  font-family: "Barlow";
+  font-weight: 600;
+  font-size: 38px;
+  color: #292929;
+}
+.foods-types {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}
+.type {
+  width: 146px;
+  height: 56px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 50px;
+  background-color: #ffffff;
+}
+
+.type > img {
+  margin: 0;
+}
+.type > p {
+  font-family: "Barlow";
+  font-size: 16px;
+  font-weight: 500;
+  color: #292929;
+}
+.type-pizza {
+  width: 146px;
+  height: 56px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 50px;
+  background-color: #292929;
+}
+.type-pizza > img {
+  margin: 0;
+}
+.type-pizza > p {
+  font-family: "Barlow";
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+}

@@ -1,0 +1,23 @@
+.food-types {
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 45px;
+  background-color: #fff;
+}
+.types {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+.types > img {
+  margin: 0;
+}
+.types > p {
+  font-family: "Barlow";
+  font-size: 16px;
+  font-weight: 500;
+  color: #292929;
+}

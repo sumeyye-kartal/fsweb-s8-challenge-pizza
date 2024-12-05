@@ -1,40 +1,52 @@
 header {
   background-color: #ce2829;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  height: 130px;
 }
-header nav {
+.explanation-section {
+  width: 100%;
+  background-color: #faf7f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 25px;
+}
+.explanation-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 532px;
+  gap: 25px;
+}
+.explanation-content img {
+  width: 525px;
+  height: 230px;
+}
+.explanation-content nav {
   margin-top: 20px;
   width: 532px;
 }
-header nav a {
+.explanation-content nav a {
   text-decoration: none;
-  color: #faf7f2;
   font-family: "Barlow";
   line-height: 28.8px;
 }
 .first-a {
   font-weight: 400;
+  color: #5f5f5f;
 }
 .second-a {
   font-weight: 700;
+  color: #ce2829;
 }
-.main-content {
-  width: 100%;
-  /* height: 1340px; */
+.description-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 25px;
 }
-main {
-  width: 532px;
-}
-
-fieldset {
-  border: none;
-}
-
 .description-content h3 {
   font-family: "Barlow";
   font-size: 22px;
@@ -63,45 +75,129 @@ fieldset {
   font-family: "Barlow";
   line-height: 28.8px;
 }
-.pizza-feature {
+.main-content {
+  width: 100%;
   display: flex;
-  gap: 220px;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
 }
+
+main {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main form {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+fieldset {
+  border: none;
+}
+
+.pizza-feature {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
 .boyut-section legend,
 .hamur-section legend {
   font-family: "Barlow";
   font-weight: 600;
-  font-size: 20px;
+  font-size: 18px;
   color: #292929;
+  margin-bottom: 1rem;
 }
 span {
   font-family: "Barlow";
   font-weight: 600;
-  font-size: 20px;
+  font-size: 18px;
   color: #ce2829;
 }
 .boyut-section > div {
   font-family: "Barlow";
   font-weight: 500;
-  line-height: 56px;
   color: #5f5f5f;
 }
+
+.boyut-section {
+  display: flex;
+  gap: 1rem;
+}
+
+.boyut-section label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: #faf7f2;
+}
+
+.boyut-section input {
+  opacity: 0;
+  position: absolute;
+}
+
 .hamur-section select {
+  width: 180px;
+  height: 50px;
   font-family: "Barlow";
   font-weight: 500;
   color: #5f5f5f;
-  margin-top: 20px;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  background-color: #faf7f2;
 }
+
+.hamur-btn {
+  background-color: #faf7f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  border-radius: 0.5rem;
+}
+
 .ekMalzemeler-section {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  height: 300px;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-top: 2rem;
+  width: 100%;
 }
+
+.ekMalzemeler-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.malzeme-section {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 20rem;
+  gap: 0.5rem;
+}
+
 .ekMalzemeler-section legend {
   font-family: "Barlow";
   font-weight: 600;
-  font-size: 20px;
+  font-size: 18px;
 }
 .ekMalzemeler-section p {
   font-family: "Barlow";
@@ -111,21 +207,31 @@ span {
 .ekMalzemeler-section label {
   font-family: "Barlow";
   font-weight: 700;
-  line-height: 28.8px;
   color: #5f5f5f;
-}
-.malzeme-section {
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  height: 220px;
-  gap: 10px;
-  padding: 20px 0;
+  align-items: center;
+}
+
+.ekMalzemeler-section input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 3rem;
+  height: 3rem;
+  background-color: #f4f4f4;
+}
+
+.ekMalzemeler-section input:checked {
+  background-color: #fdc913;
 }
 
 .username-section,
 .siparis-section {
   margin-top: 40px;
+  margin-bottom: 40px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .username-section legend,
@@ -138,17 +244,21 @@ span {
 
 .username-section input,
 .siparis-section input {
-  width: 500px;
+  width: 100%;
   height: 56px;
   border-radius: 6px;
   border: 1px solid #d9d9d9;
   color: #5f5f5f;
+  background-color: #faf7f2;
   padding-left: 20px;
 }
 .pay-section {
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding-bottom: 10rem;
+  padding-top: 3rem;
 }
 .button-section {
   display: flex;
@@ -173,19 +283,22 @@ span {
   height: 57px;
   display: flex;
   justify-content: center;
+  align-items: center;
   font-family: "Barlow";
   font-weight: 700px;
   color: #000000;
 }
 .price-section {
-  width: 350px;
+  width: 300px;
   height: 255px;
   border: 1px #d9d9d9 solid;
   border-radius: 6px;
+  background-color: #faf7f2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .siparis-button {
-  width: 350px;
-  height: 62px;
   border-radius: 6px;
   background-color: #fdc913;
   border: none;
@@ -194,6 +307,7 @@ span {
   font-weight: 600;
   font-size: 18px;
   cursor: pointer;
+  height: 50px;
 }
 
 .siparis-button:disabled {
@@ -201,27 +315,29 @@ span {
 }
 
 .totalPay-section {
-  width: 350px;
-  height: 197px;
   display: flex;
   flex-direction: column;
+  gap: 1rem;
+  margin-top: 3rem;
 }
 .choose-section {
   display: flex;
-  flex-direction: row;
   justify-content: space-around;
+}
+.choose-section p {
   font-family: "Barlow";
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
   color: #5f5f5f;
 }
 .total-section {
   display: flex;
-  flex-direction: row;
   justify-content: space-around;
+}
+.total-section p {
   font-family: "Barlow";
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
   color: #ce2829;
 }
 .totalPay-section h3 {
@@ -229,6 +345,7 @@ span {
   font-family: "Barlow";
   font-weight: 600;
   font-size: 20px;
+  margin-left: -10px;
 }
 
 #error-message {

@@ -1,0 +1,105 @@
+.footer-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #1a1a1a;
+}
+
+.footer-start {
+  width: 980px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.communication-section {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 300px;
+  height: 320px;
+}
+.adres-logo {
+  width: 180px;
+  height: 80px;
+}
+.footer-first-icon,
+.footer-second-icon,
+.footer-third-icon {
+  width: 25px;
+  height: 25px;
+}
+.communication-section p {
+  color: #ffffff;
+  font-family: "Barlow";
+  font-weight: 400;
+  font-size: 16px;
+}
+.communication-section div {
+  display: flex;
+  justify-content: left;
+  gap: 20px;
+}
+.footer-menu {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 320px;
+}
+.footer-menu li {
+  padding: 10px;
+  color: #ffffff;
+  font-family: "Barlow";
+  font-weight: 400;
+  font-size: 16px;
+}
+.footer-menu ul {
+  list-style: none;
+  padding: 0;
+}
+.footer-menu h3 {
+  color: #ffffff;
+  font-family: "Barlow";
+  font-weight: 500;
+  font-size: 20px;
+}
+.instagram-img {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 320px;
+  height: 300px;
+}
+.first-instagram-img,
+.second-instagram-img {
+  display: flex;
+  gap: 20px;
+}
+.instagram-img h3 {
+  color: #ffffff;
+  font-family: "Barlow";
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.footer-mid {
+  border-top: 1px solid #ffffff;
+  width: 100%;
+}
+
+.page-end {
+  width: 980px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.page-end p {
+  color: #fff;
+}
+.twiter-icon {
+  color: #ffffff;
+}

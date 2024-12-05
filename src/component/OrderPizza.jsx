@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import "../css/OrderPizza.css";
 import axios from "axios";
-import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import "../css/OrderPizza.css";
+import { NavLink } from "react-router-dom";
+import Footer from "./Footer";
 
 const selections = [
   "Pepperoni",
@@ -26,14 +27,13 @@ const errorMessage = {
 
 function OrderPizza() {
   const [isValid, setIsValid] = useState(false);
-  const [count, setCount] = useState(0);
-  const [pizzaItem, setPizzaItem] = useState([]);
   const [formData, setFormData] = useState({
     username: "",
     size: "",
     thick: "",
     ordernote: "",
-    malzemeler: pizzaItem,
+    pizzaItem: [],
+    pizzaCount: 0,
   });
   const [error, setError] = useState({
     username: true,
@@ -41,6 +41,7 @@ function OrderPizza() {
     thick: true,
     malzemeler: true,
   });
+  const [radioCheck, setRadioCheck] = useState("");
 
   useEffect(() => {
     if (!error.username && !error.thick && !error.size && !error.malzemeler) {
@@ -54,24 +55,30 @@ function OrderPizza() {
 
     axios
       .post("https://reqres.in/api/pizza", formData)
-      .then((response) => console.log(response))
+      .then((response) => {
+        console.log(response);
+        const pizzaData = response.data;
+        const queryParams = new URLSearchParams({
+          pizzaData: JSON.stringify(pizzaData),
+        }).toString();
+        window.location.href = `/success?${queryParams}`;
+      })
       .catch((error) => console.warn(error));
   };
 
   const handleChange = (event) => {
     const { name, value, checked, type } = event.target;
-    let newFormData = {};
-    let newPizzaItem = [];
+    let newFormData = { ...formData };
     if (type === "checkbox") {
-      if (pizzaItem.includes(value)) {
-        newPizzaItem = pizzaItem.filter((item) => item !== value);
-        newFormData = { ...formData, [name]: newPizzaItem };
-      } else {
-        newPizzaItem = [...pizzaItem, value];
-        newFormData = { ...formData, [name]: newPizzaItem };
-      }
+      const newPizzaItem = formData.pizzaItem.includes(value)
+        ? formData.pizzaItem.filter((item) => item !== value)
+        : [...formData.pizzaItem, value];
+      newFormData.pizzaItem = newPizzaItem;
+    } else if (type === "radio") {
+      newFormData[name] = value;
+      setRadioCheck(value);
     } else {
-      newFormData = { ...formData, [name]: value };
+      newFormData[name] = value;
     }
 
     setError((prevError) => ({
@@ -80,32 +87,37 @@ function OrderPizza() {
       size: newFormData.size === "" ? true : false,
       thick: newFormData.thick === "" ? true : false,
       malzemeler:
-        newFormData.malzemeler.length >= 4 &&
-        newFormData.malzemeler.length <= 10
+        newFormData.pizzaItem.length >= 4 && newFormData.pizzaItem.length <= 10
           ? false
           : true,
     }));
-
-    setPizzaItem(newPizzaItem);
     setFormData(newFormData);
+  };
+
+  const handleCount = (islem) => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      pizzaCount:
+        islem === "topla" ? formData.pizzaCount + 1 : formData.pizzaCount - 1,
+    }));
   };
 
   return (
     <>
       <header>
         <img src="../assets/Iteration-1-assets/logo.svg" />
-        <nav>
-          <NavLink to="/" className="first-a">
-            Anasayfa
-          </NavLink>
-          <a href="#" className="second-a">
-            -Sipariş Oluştur
-          </a>
-        </nav>
       </header>
-
-      <div className="main-content">
-        <main>
+      <div className="explanation-section">
+        <div className="explanation-content">
+          <img src="../../Assets/Iteration-2-aseets/pictures/form-banner.png" />
+          <nav>
+            <NavLink to="/" className="first-a">
+              Anasayfa-
+            </NavLink>
+            <a href="#" className="second-a">
+              Sipariş Oluştur
+            </a>
+          </nav>
           <section className="description-content">
             <h3>Position Absolute Acı Pizza</h3>
             <div className="pizza-info">
@@ -125,78 +137,110 @@ function OrderPizza() {
               pizzetta denir.
             </p>
           </section>
-
+        </div>
+      </div>
+      <div className="main-content">
+        <main>
           <form onSubmit={handleSubmit}>
             <section className="pizza-feature">
               <fieldset className="boyut-section">
                 <legend>Boyut Seç {error.size ? <span>*</span> : null}</legend>
-
                 <div>
-                  <input
-                    id="küçük"
-                    name="size"
-                    type="radio"
-                    value="Küçük"
-                    onChange={handleChange}
-                  />
-                  <label htmlFor="küçük">Küçük</label>
+                  <label
+                    htmlFor="küçük"
+                    style={
+                      radioCheck === "Küçük"
+                        ? { backgroundColor: "#FFEECC" }
+                        : {}
+                    }
+                  >
+                    S
+                    <input
+                      id="küçük"
+                      name="size"
+                      type="radio"
+                      value="Küçük"
+                      onChange={handleChange}
+                    />
+                  </label>
                 </div>
                 <div>
-                  <input
-                    id="orta"
-                    name="size"
-                    type="radio"
-                    value="Orta"
-                    onChange={handleChange}
-                  />
-                  <label htmlFor="orta">Orta</label>
+                  <label
+                    htmlFor="orta"
+                    style={
+                      radioCheck === "Orta"
+                        ? { backgroundColor: "#FFEECC" }
+                        : {}
+                    }
+                  >
+                    M
+                    <input
+                      id="orta"
+                      name="size"
+                      type="radio"
+                      value="Orta"
+                      onChange={handleChange}
+                    />
+                  </label>
                 </div>
                 <div>
-                  <input
-                    id="büyük"
-                    name="size"
-                    type="radio"
-                    value="Büyük"
-                    onChange={handleChange}
-                  />
-                  <label htmlFor="büyük">Büyük</label>
+                  <label
+                    htmlFor="büyük"
+                    style={
+                      radioCheck === "Büyük"
+                        ? { backgroundColor: "#FFEECC" }
+                        : {}
+                    }
+                  >
+                    L
+                    <input
+                      id="büyük"
+                      name="size"
+                      type="radio"
+                      value="Büyük"
+                      onChange={handleChange}
+                    />
+                  </label>
                 </div>
               </fieldset>
 
               <fieldset className="hamur-section">
                 <legend>Hamur Seç {error.thick ? <span>*</span> : null}</legend>
-                <select name="thick" onChange={handleChange}>
-                  <option value="">Hamur Kalınlığı</option>
-                  <option value="İnce">İnce</option>
-                  <option value="Normal">Normal</option>
-                  <option value="Kalın">Kalın</option>
-                </select>
+                <div className="hamur-btn">
+                  <select name="thick" onChange={handleChange}>
+                    <option value="">-Hamur Kalınlığı Seç-</option>
+                    <option value="İnce">İnce</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Kalın">Kalın</option>
+                  </select>
+                </div>
               </fieldset>
             </section>
 
             <section className="ekMalzemeler-section">
-              <fieldset>
+              <div className="ekMalzemeler-header">
                 <legend>Ek Malzemeler</legend>
                 <p>En Fazla 10 malzeme seçebilirsiniz. 5₺</p>
                 {error.malzemeler ? (
                   <p id="error-message">{errorMessage.malzemeler}</p>
                 ) : null}
-                <div className="malzeme-section">
-                  {selections.map((malzeme, index) => (
-                    <label htmlFor={malzeme} key={index}>
+              </div>
+              <div className="malzeme-section">
+                {selections.map((malzeme, index) => (
+                  <div key={index}>
+                    <label htmlFor={malzeme}>
                       <input
                         name="malzemeler"
                         id={malzeme}
                         type="checkbox"
                         value={malzeme}
-                        checked={pizzaItem.includes(malzeme)}
                         onChange={handleChange}
                       />
                       {malzeme}
                     </label>
-                  ))}
-                </div>
-              </fieldset>
+                  </div>
+                ))}
+              </div>
             </section>
 
             <fieldset className="username-section">
@@ -228,39 +272,41 @@ function OrderPizza() {
               <div className="button-section">
                 <button
                   type="button"
-                  onClick={() => setCount(count - 1)}
-                  disabled={count <= 0}
+                  onClick={() => handleCount("cikar")}
+                  disabled={formData.pizzaCount <= 0}
                 >
                   <span>-</span>
                 </button>
                 <p>
-                  <span>{count}</span>
+                  <span>{formData.pizzaCount}</span>
                 </p>
-                <button type="button" onClick={() => setCount(count + 1)}>
+                <button type="button" onClick={() => handleCount("topla")}>
                   <span>+</span>
                 </button>
               </div>
+
               <div className="price-section">
                 <div className="totalPay-section">
                   <h3>Sipariş Toplamı</h3>
                   <div className="choose-section">
                     <p>Seçimler</p>
-                    <p>25.00 ₺</p>
+                    <p>{formData.pizzaItem.length * 5}₺</p>
                   </div>
                   <div className="total-section">
                     <p>Toplam</p>
-                    <p>110.50 ₺</p>
+                    <p>{formData.pizzaCount * 85}₺</p>
                   </div>
                 </div>
-                <div>
-                  <button className="siparis-button" disabled={!isValid}>
-                    SİPARİŞ VER
-                  </button>
-                </div>
+                <button className="siparis-button" disabled={!isValid}>
+                  SİPARİŞ VER
+                </button>
               </div>
             </section>
           </form>
         </main>
+      </div>
+      <div>
+        <Footer />
       </div>
     </>
   );

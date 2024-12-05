@@ -1,0 +1,56 @@
+.menuCard-content {
+  background-color: #faf7f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding-top: 20px;
+  padding-bottom: 5rem;
+}
+.first-menu,
+.second-menu,
+.third-menu {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 1rem;
+}
+.likes {
+  display: flex;
+  justify-content: space-between;
+}
+
+.likes p:nth-child(2) {
+  margin-left: 4rem;
+}
+.menuCard-content img {
+  width: 220px;
+  align-self: center;
+}
+.first-menu,
+.second-menu,
+.third-menu,
+h2 {
+  font-family: "Barlow";
+  font-size: 19px;
+  font-weight: 400px;
+}
+.first-menu,
+.second-menu,
+.third-menu,
+p {
+  font-family: "Barlow";
+  font-size: 15px;
+  font-weight: 400px;
+  color: #1b1b1b;
+}
+.likes p:nth-child(3) {
+  font-family: "Barlow";
+  font-size: 18px;
+  color: #292929;
+  font-weight: bold;
+}
